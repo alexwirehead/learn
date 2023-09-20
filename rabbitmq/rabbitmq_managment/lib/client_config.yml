@@ -3,6 +3,7 @@ rabbit_connection:
   api_port: 15672
   port: 5672
   dafault_vhost_name: "%2F" # энкодинг имени дефолтного vhost /
+  node_name: "rabbit@test-rabbit"
 
 rabbit_creds:
   username: admin

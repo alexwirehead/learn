@@ -42,6 +42,7 @@ def fetch_config_data(config_key: str, config_file_name: str) -> Any:
 
 RABBIT_HOST = fetch_config_data('rabbit_connection', CONFIG_FILE_NAME)['host']
 RABBIT_PORT = fetch_config_data('rabbit_connection', CONFIG_FILE_NAME)['port']
+RABBIT_NODE_NAME = fetch_config_data('rabbit_connection', CONFIG_FILE_NAME)['node_name']
 
 RABBIT_API_PORT = fetch_config_data('rabbit_connection', CONFIG_FILE_NAME)['api_port']
 RABBIT_ROOT_API_URL = f'http://{RABBIT_HOST}:{RABBIT_API_PORT}'

@@ -1,5 +1,6 @@
 from lib import (http_client,
-                 mod_logger
+                 mod_logger,
+                 RABBIT_NODE_NAME
                  )
 
 logger = mod_logger()
@@ -15,7 +16,7 @@ class QueuesAdmin:
         playload = {"auto_delete": False,
                     "durable": True,
                     "arguments": queue_args,
-                    "node": "rabbit@test-rabbit"}
+                    "node": RABBIT_NODE_NAME}
 
         resp = self.__http_client.call_api(method='PUT', api_playload=playload, api_uri=uri)
         if resp.status_code == 201:
