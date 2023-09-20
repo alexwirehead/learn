@@ -1,0 +1,9 @@
+rabbit_connection:
+  host: localhost
+  api_port: 15672
+  port: 5672
+  dafault_vhost_name: "%2F" # энкодинг имени дефолтного vhost /
+
+rabbit_creds:
+  username: admin
+  password: admin
