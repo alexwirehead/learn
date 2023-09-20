@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 import argparse
 from textwrap import dedent
 
@@ -52,15 +53,25 @@ def run_command(args, parser):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(prog='Скрипт управления RabbitMQ',
                                      usage=dedent('''\
+                                     ==========================================================
+                                     Функциональность скрипта:
+                                     
+                                       Добавление нового пользователя
+                                       Добавление новой очереди
+                                       Отправка сообщения
+
+                                     ==========================================================
+                                     
                                      Примеры использования
-                                        Вызов стправки:
+                                        Вызов справки:
                                             rq_admin.py -h
+                                     ==========================================================
                                         Создание пользователя:
                                             rq_admin.py -o user -u foo -p bar -t management
-                                        
+                                     ==========================================================   
                                         Создание очереди:
                                             rq_admin.py -o queue -q new_queue -a {}
-                                        
+                                     ==========================================================   
                                         Отправка сообщения:
                                             rq_admin.py -o msg -mq new_queue -b 'Hello World!'
                                         '''
@@ -73,7 +84,7 @@ if __name__ == '__main__':
                         required=True,
                         help='Объект RabbitMQ с которым производится действие')
 
-    users = parser.add_argument_group('Аргументы для администирования пользователей')
+    users = parser.add_argument_group('Аргументы для добавления пользователей')
     users.add_argument('-u', '--username',
                        dest='username',
                        help='Имя пользователя')
@@ -85,7 +96,8 @@ if __name__ == '__main__':
                        choices=['administrator', 'monitoring', 'management'],
                        help='Тэги пользователя')
 
-    queue = parser.add_argument_group('Опции для администирования очередей')
+
+    queue = parser.add_argument_group('Аргументы для добавления очередей')
     queue.add_argument('-q', '--queue-name',
                        dest='queue_name',
                        help='Имя очереди')
@@ -93,7 +105,7 @@ if __name__ == '__main__':
                        dest='args_queue',
                        required=False,
                        default={},
-                       help='Опции очереди')
+                       help='Опции очереди при добавлении')
 
     msg = parser.add_argument_group('Аргументы для отправки сообщения в очередь')
     msg.add_argument('-mq', '--msg-queue-name',
